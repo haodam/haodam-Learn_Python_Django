@@ -1,3 +1,2 @@
-# haodam-Learn_Python_Django
-BASIC
+# haodam-Learn_Python_Django-Web
 
