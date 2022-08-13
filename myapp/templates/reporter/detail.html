@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view_detail_reporter</title>
+</head>
+<body>
+    <h1> Chi tiet nguoi lam bao so: {{ reporter.id }}</h1>
+    <p> Name: {{ reporter.first_name }} {{ reporter.last_name }}</p>
+    <p>Email: {{ reporter.email }}</p>
+    <h4>Danh sach cac bai bao</h4>
+    <ul>
+        {% for article in reporter.article_set.all %}
+            <li> {{ article.headline }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

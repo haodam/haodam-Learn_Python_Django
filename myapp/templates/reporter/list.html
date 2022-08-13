@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    List all reporter
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <!-- <ul class="nav justify-content-end">
+            <li class="nav-item">
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'logout_user' %}">Chao Mung {{user.first_name}} {{user.last_name}} <i class="bi bi-lock"></i> </a>
+            {% else %}
+                <a class="nav-link active" href="{% url 'login_user' %}"> <i class="bi bi-unlock"></i> Log in </a>
+            {% endif %}
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'register_user' %}"> <i class="bi bi-person"></i> Register</a>
+            </li>
+        </ul> -->
+        <div class= "row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Ten</th>
+                        <th scope="col">Ho</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"><a href="{% url 'add_reporter'%}"><i class="bi bi-plus-square"></i></a></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for reporter in all_reporters %}
+                        <tr>
+                            <th scope="row"> {{ forloop.counter }}</th>
+                            <td> <a href = "{% url 'view_detail_reporter' reporter_id=reporter.id % } "> {{reporter.first_name}} </a></td>
+                            <td>{{ reporter.last_name }}</td>
+                            <td>{{ reporter.email }}</td>
+                            <td> 
+                                <a href="{% url 'view_detail_reporter' reporter_id=reporter.id %}"> <i class="bi bi-eye"></i> </a> 
+                                | 
+                                <a href="{% url 'update_reporter' reporter_id=reporter.id %}"> <i class="bi bi-pencil"></i> </a>
+                                | 
+                                <a href="{% url 'delete_reporter' reporter_id=reporter.id %}"> <i class="bi bi-trash"></i> </a>
+                            </td> 
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
